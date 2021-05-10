@@ -1,11 +1,13 @@
 package com.TicTacToe;
 
+import java.util.Scanner;
+
 public class TicTacToeGame {
 	
 	public static void main(String[] args) {
 		
 		char[] board = createBoard();
-		System.out.println();
+		
 	}
 	
 	//uc1//
