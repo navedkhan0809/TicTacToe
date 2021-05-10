@@ -1,5 +1,6 @@
 package com.TicTacToe;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TicTacToeGame {
@@ -11,7 +12,7 @@ public class TicTacToeGame {
 		char userLetter = chooseUserLetter(userInput);
 		char computerLetter = (userLetter == 'X') ? '0':'O';
 		showBoard(board);
-		startMove(board);
+		int userMove = getUserMove(board,userInput);
 	}
 	
 
@@ -41,15 +42,22 @@ public class TicTacToeGame {
 		System.out.println("______________");	
 	}
 	
+	
 	//UC4//
-	public static char startMove(char[] board) {
-		Scanner userInput = new Scanner(System.in);
-		char position = chooseUserLetter(userInput);
-		if (position<1 && position >9) {
-			board[] = userLetter;
+	public static char getUserMove(char[] board,Scanner userInput) {
+		Integer [] validCells = {1,2,3,4,5,6,7,8,9};
+		
+		while(true) {
+			System.out.print("what is next move? (1-9): ");
+			int index = userInput.nextInt();
+			if (Arrays.asList(validCells).contains(index) && isSpaceFree(board, index)) 
+				return (char) index;
 		}
-			return userInput.next().toUpperCase().charAt(0);
-		}
+	}
+
+	private static boolean isSpaceFree(char[] board, int index) {
+		
+		return board[index] == ' ';
 	}
 
 }
